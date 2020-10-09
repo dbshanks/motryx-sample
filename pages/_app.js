@@ -1,7 +1,12 @@
+import Main from '@Layout/Main';
 import '@scss/main.scss';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <Main>
+      <Component {...pageProps} />
+    </Main>
+  );
 }
 
 export default MyApp;

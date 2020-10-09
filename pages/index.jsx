@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Main from '@Layout/Main';
 
 export default function Home() {
   return (
@@ -8,9 +7,8 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Main>
-        <h1>Hello World</h1>
-      </Main>
+
+      <h1>Hello World</h1>
     </div>
   );
 }

@@ -5,10 +5,12 @@
   font-family: sans-serif;
 }
 
-h1 {
-  color: $brand-green;
+a {
+  color: $gray;
+  text-decoration: none;
+  transition: all 0.3s linear;
 }
 
-h2 {
-  color: red;
+a:hover {
+  color: $brand-green;
 }

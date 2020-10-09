@@ -1,20 +1,5 @@
 export const Container = (props) => {
-  const {
-    width,
-    children,
-    className,
-    p,
-    pt,
-    pb,
-    pl,
-    pr,
-    m,
-    mt,
-    mr,
-    mb,
-    ml,
-    ...rest
-  } = props;
+  const { width, children, className, p, pt, pb, pl, pr, ...rest } = props;
   const containerStyles = {
     width: `${width}%`,
     padding: `${p}rem`,
@@ -22,6 +7,7 @@ export const Container = (props) => {
     paddingRight: `${pr}rem`,
     paddingBottom: `${pb}rem`,
     paddingLeft: `${pl}rem`,
+    margin: '0 auto',
   };
   return (
     <div style={containerStyles} {...rest} className={`${className}`}>
@@ -48,7 +34,6 @@ export const Row = (props) => {
 export const Column = (props) => {
   const { col, children, className, ...rest } = props;
   const colStyles = {
-    display: 'block',
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: `calc(100% / 12 * ${col})`,

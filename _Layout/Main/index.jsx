@@ -1,12 +1,13 @@
 import Navbar from '@Layout/Navbar';
 
+import { Container } from '@Layout/Grid/index';
+
 const Main = ({ children }) => {
   return (
-    <div className='container is-fullhd'>
+    <Container width={80}>
       <Navbar />
       {children}
-      <h1>Test</h1>
-    </div>
+    </Container>
   );
 };
 
