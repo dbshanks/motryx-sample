@@ -1,0 +1,14 @@
+@import 'partials/reset';
+@import 'partials/vars';
+
+:root {
+  font-family: sans-serif;
+}
+
+h1 {
+  color: $brand-green;
+}
+
+h2 {
+  color: red;
+}
