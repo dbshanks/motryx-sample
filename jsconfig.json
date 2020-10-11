@@ -1,16 +1,12 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@Components/*": [
-                "_Components/*"
-            ],
-            "@Layout/*": [
-                "_Layout/*"
-            ],
-            "@scss/*": [
-                "scss/*"
-            ]
-        }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@Components/*": ["_Components/*"],
+      "@Layout/*": ["_Layout/*"],
+      "@Models/*": ["_Models/*"],
+      "@Utils/*": ["utils/*"],
+      "@scss/*": ["scss/*"]
     }
+  }
 }
