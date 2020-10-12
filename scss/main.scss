@@ -5,6 +5,12 @@
   font-family: sans-serif;
 }
 
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 a {
   color: $gray;
   text-decoration: none;
@@ -13,4 +19,34 @@ a {
 
 a:hover {
   color: $brand-green;
+}
+
+td:not(:first-child) {
+  padding: 0.5rem;
+}
+td {
+  border-bottom: 1px solid #333;
+}
+
+form {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+input {
+  margin-top: 0.5rem;
+  width: 90%;
+  border: none;
+  background: $off-white;
+  padding: 0.5rem;
+  border-bottom: 1px solid $brand-green;
+  outline-color: $brand-green;
+}
+
+textarea {
+  border: none;
+  background: $off-white;
+  border-bottom: 1px solid $brand-green;
+  outline-color: $brand-green;
 }

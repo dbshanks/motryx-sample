@@ -5,20 +5,22 @@
 
 .navbarWrapper {
   display: flex;
-  align-items: center;
 }
 
 .leftnav {
-  margin-top: 0.5rem;
-  margin-left: 2rem;
+  margin-top: 1.2rem;
   display: flex;
+}
+
+.li {
+  margin-right: 1rem;
+}
+
+.li:first-child {
+  margin-left: 1rem;
 }
 
 .logo {
   font-size: 2.5rem;
   font-weight: 100;
-}
-
-.li {
-  margin-right: 1rem;
 }

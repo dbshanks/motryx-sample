@@ -10,13 +10,10 @@ const index = () => {
           <h1 className={styles.logo}>motryx</h1>
           <ul className={styles.leftnav}>
             <li className={styles.li}>
-              <Link href='/tracking'>Tracking Input</Link>
+              <Link href='/'>New Tracker</Link>
             </li>
             <li className={styles.li}>
-              <Link href='/history'>History</Link>
-            </li>
-            <li className={styles.li}>
-              <Link href='/logs'>Logs</Link>
+              <Link href='/loghistory'>Log History</Link>
             </li>
           </ul>
         </Column>

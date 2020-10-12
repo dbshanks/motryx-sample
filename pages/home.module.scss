@@ -1,0 +1,20 @@
+.formRow {
+  margin-bottom: 2rem;
+}
+
+.button {
+  width: 10rem;
+  background: $black;
+  color: $white;
+  transition: all 0.3s linear;
+}
+
+.button:hover {
+  color: $brand-green;
+}
+
+.label {
+  color: $gray;
+  font-size: 0.9rem;
+  font-weight: 100;
+}

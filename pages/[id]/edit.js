@@ -39,7 +39,7 @@ const Home = () => {
         },
         body: JSON.stringify(form),
       });
-      router.push('/');
+      router.push('/loghistory');
     } catch (error) {
       console.log(error);
     }
