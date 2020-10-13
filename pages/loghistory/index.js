@@ -1,51 +1,43 @@
 import React from 'react';
-import Link from 'next/link';
-import { Row, Column } from '@Layout/Grid';
-import styles from './loghistory.module.scss';
+import { Table } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
+import { COLUMNS } from '@Models/Columns';
+import styles from './loghistory.module.scss';
 
 const LogHistory = ({ data }) => {
   const router = useRouter();
-
   return (
-    <div>
-      <Row>
-        <Column col={12}>
-          <table>
-            <thead>
-              <tr>
-                <th>Vial ID</th>
-                <th>Zone From</th>
-                <th>Zone To</th>
-                <th>User</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item) => {
-                return (
-                  <tr
-                    key={item._id}
-                    onClick={() => router.push(`/${item._id}`)}
-                    className={styles.rowClicks}>
-                    <td>{item.vial_id}</td>
-                    <td>{item.zone_from}</td>
-                    <td>{item.zone_to}</td>
-                    <td>{item.user}</td>
-                    <td>{item.description}</td>
-                    <td>
-                      <Link href={`/${item._id}`}>
-                        <a>Edit</a>
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </Column>
-      </Row>
-    </div>
+    <React.Fragment>
+      <Table celled>
+        <Table.Header>
+          <Table.Row>
+            {COLUMNS.map((item) => (
+              <Table.HeaderCell key={item.Header}>
+                {item.Header}
+              </Table.HeaderCell>
+            ))}
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {data.map((item) => {
+            return (
+              <Table.Row
+                key={item._id}
+                onClick={() => router.push(`/${item._id}`)}
+                className={styles.rowHover}>
+                <Table.Cell>{item.date}</Table.Cell>
+                <Table.Cell>{item.vial_id}</Table.Cell>
+                <Table.Cell>{item.zone_from}</Table.Cell>
+                <Table.Cell>{item.zone_to}</Table.Cell>
+                <Table.Cell>{item.user}</Table.Cell>
+                <Table.Cell>{item.diagnosis}</Table.Cell>
+                <Table.Cell>{item.description}</Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table>
+    </React.Fragment>
   );
 };
 

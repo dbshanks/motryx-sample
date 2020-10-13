@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-unfetch';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Row, Column } from '@Layout/Grid';
+import { Grid, Confirm, Button, Loader } from 'semantic-ui-react';
 
 const Log = ({ log }) => {
-  //   const [confirm, setConfirm] = useState(false);
+  const [confirm, setConfirm] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 
@@ -13,6 +13,9 @@ const Log = ({ log }) => {
       deleteLog();
     }
   }, [isDeleting]);
+
+  const open = () => setConfirm(true);
+  const close = () => setConfirm(false);
 
   const deleteLog = async () => {
     const logId = router.query.id;
@@ -31,24 +34,28 @@ const Log = ({ log }) => {
 
   const handleDelete = async () => {
     setIsDeleting(true);
+    close();
   };
   return (
-    <Row>
+    <Grid.Row>
       {isDeleting ? (
-        <div>Loading...</div>
+        <Loader active />
       ) : (
-        <Column col={4}>
+        <Grid.Column>
+          <p>{log.date}</p>
           <p>{log.vial_id}</p>
           <p>{log.user}</p>
           <p>{log.zone_to}</p>
           <p>{log.zone_from}</p>
+          <p>{log.diagnosis}</p>
           <p>{log.description}</p>
-          <button className='button' onClick={handleDelete}>
+          <Button color='red' onClick={open}>
             Delete
-          </button>
-        </Column>
+          </Button>
+        </Grid.Column>
       )}
-    </Row>
+      <Confirm open={confirm} onCancel={close} onConfirm={handleDelete} />
+    </Grid.Row>
   );
 };
 

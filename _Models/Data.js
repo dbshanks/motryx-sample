@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
 const DataSchema = new mongoose.Schema({
+  date: {
+    type: String,
+    required: [true, 'A date should be present to properly track items'],
+  },
   vial_id: {
-    type: Number,
+    type: String,
     unique: true,
     required: [true, 'A label ID must be provided.'],
-    createdAt: { type: Date, default: Date.now() },
   },
   zone_from: {
     type: String,
@@ -14,6 +17,10 @@ const DataSchema = new mongoose.Schema({
   zone_to: {
     type: String,
     required: [true, 'A receiving zone must be entered'],
+  },
+  diagnosis: {
+    type: String,
+    required: [true, 'A brief diagnosis caption is helpful'],
   },
   user: {
     type: String,

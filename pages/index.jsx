@@ -2,16 +2,18 @@ import { Link } from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
-import { Row, Column } from '@Layout/Grid';
+import { Form, Button, TextArea, Loader, Grid } from 'semantic-ui-react';
 import styles from './home.module.scss';
 
 const Home = () => {
   const [form, setForm] = useState([
     {
+      date: '',
       user: '',
       vial_id: '',
       zone_from: '',
       zone_to: '',
+      diagnosis: '',
       description: '',
     },
   ]);
@@ -39,7 +41,7 @@ const Home = () => {
         },
         body: JSON.stringify(form),
       });
-      router.push('/');
+      router.push('/loghistory');
     } catch (error) {
       console.log(error);
     }
@@ -61,6 +63,9 @@ const Home = () => {
 
   const validate = () => {
     let err = {};
+    if (!form.date) {
+      err.date = 'A valid date is required';
+    }
     if (!form.user) {
       err.user = 'A user is required';
     }
@@ -73,73 +78,115 @@ const Home = () => {
     if (!form.vial_id) {
       err.vial_id = 'A valid Vial ID is required to process the tracking.';
     }
+    if (!form.diagnosis) {
+      err.date = 'Providing a diagnosis is helpful';
+    }
     return err;
   };
   return (
     <React.Fragment>
       {isSubmitting ? (
-        <div>Loading....</div>
+        <Loader />
       ) : (
-        <form onSubmit={handleSubmit}>
-          <Row className={styles.formRow}>
-            <Column col={3}>
-              <label className={styles.label}>User</label>
-              <input
-                type='text'
-                error={
-                  errors.user
-                    ? { content: 'Please enter a valid user id' }
-                    : null
-                }
-                placeholder='User'
-                name='user'
-                onChange={handleChange}
-              />
-            </Column>
-            <Column col={3}>
-              <label className={styles.label}>Vial ID</label>
-              <input
-                type='text'
-                error={
-                  errors.vial_id
-                    ? { content: 'Please enter a valid Vial ID' }
-                    : null
-                }
-                placeholder='Vial ID'
-                name='vial_id'
-                onChange={handleChange}
-              />
-            </Column>
-            <Column col={3}>
-              <label className={styles.label}>Zone From</label>
-              <input
-                type='text'
-                error={
-                  errors.zone_from ? { content: 'Please enter a zone' } : null
-                }
-                placeholder='Zone From'
-                name='zone_from'
-                onChange={handleChange}
-              />
-            </Column>
-            <Column col={3}>
-              <label className={styles.label}>Zone To</label>
+        <Form onSubmit={handleSubmit}>
+          <Grid columns={4}>
+            <Grid.Row>
+              <Grid.Column>
+                <Form.Input
+                  fluid
+                  label='Date'
+                  error={
+                    errors.date
+                      ? {
+                          content: 'Please enter a valid date.',
+                        }
+                      : null
+                  }
+                  placeholder='Date'
+                  name='date'
+                  onChange={handleChange}
+                />
+              </Grid.Column>
+              <Grid.Column>
+                <Form.Input
+                  fluid
+                  label='User'
+                  error={
+                    errors.user
+                      ? {
+                          content: 'Please enter a valid user id',
+                        }
+                      : null
+                  }
+                  placeholder='User'
+                  name='user'
+                  onChange={handleChange}
+                />
+              </Grid.Column>
+              <Grid.Column>
+                <Form.Input
+                  fluid
+                  type='text'
+                  label='Vial Id'
+                  error={
+                    errors.vial_id
+                      ? { content: 'Please enter a valid Vial ID' }
+                      : null
+                  }
+                  placeholder='Vial ID'
+                  name='vial_id'
+                  onChange={handleChange}
+                />
+              </Grid.Column>
+              <Grid.Column>
+                <Form.Input
+                  fluid
+                  type='text'
+                  label='Zone From'
+                  error={
+                    errors.zone_from ? { content: 'Please enter a zone' } : null
+                  }
+                  placeholder='Zone From'
+                  name='zone_from'
+                  onChange={handleChange}
+                />
+              </Grid.Column>
 
-              <input
-                type='text'
-                placeholder='Zone To'
-                error={
-                  errors.zone_to ? { content: 'Please enter a zone' } : null
-                }
-                name='zone_to'
-                onChange={handleChange}
-              />
-            </Column>
-          </Row>
+              <Grid.Column>
+                <Form.Input
+                  fluid
+                  type='text'
+                  label='Zone To'
+                  placeholder='Zone To'
+                  error={
+                    errors.zone_to ? { content: 'Please enter a zone' } : null
+                  }
+                  name='zone_to'
+                  onChange={handleChange}
+                />
+              </Grid.Column>
+              <Grid.Column>
+                <Form.Input
+                  fluid
+                  label='Diagnosis'
+                  error={
+                    errors.diagnosis
+                      ? {
+                          content: 'A diagnosis entry is helpful',
+                        }
+                      : null
+                  }
+                  placeholder='Diagnosis'
+                  name='diagnosis'
+                  onChange={handleChange}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
 
-          <Row className={styles.formRow}>
-            <Column col={12} className={styles.description}>
-              <textarea
+          <Grid.Row>
+            <Grid.Column>
+              <TextArea
                 type='text'
                 cols='70'
                 rows='8'
@@ -147,10 +194,12 @@ const Home = () => {
                 name='description'
                 onChange={handleChange}
               />
-            </Column>
-          </Row>
-          <input type='submit' value='Create Log' className={styles.button} />
-        </form>
+            </Grid.Column>
+          </Grid.Row>
+          <Button type='submit' secondary>
+            Create Log
+          </Button>
+        </Form>
       )}
     </React.Fragment>
   );
