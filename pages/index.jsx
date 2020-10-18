@@ -2,7 +2,15 @@ import { Link } from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
-import { Form, Button, TextArea, Loader, Grid } from 'semantic-ui-react';
+import {
+  Form,
+  Button,
+  TextArea,
+  Loader,
+  Grid,
+  Segment,
+  Label,
+} from 'semantic-ui-react';
 import styles from './home.module.scss';
 
 const Home = () => {
@@ -88,117 +96,161 @@ const Home = () => {
       {isSubmitting ? (
         <Loader />
       ) : (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className={styles.indexContainer}>
+          <h1 className={styles.header}>Tracker Input</h1>
           <Grid columns={4}>
             <Grid.Row>
               <Grid.Column>
-                <Form.Input
-                  fluid
-                  label='Date'
-                  error={
-                    errors.date
-                      ? {
-                          content: 'Please enter a valid date.',
-                        }
-                      : null
-                  }
-                  placeholder='Date'
-                  name='date'
-                  onChange={handleChange}
-                />
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    Date
+                  </Label>
+                  <Form.Input
+                    fluid
+                    // label='Date'
+                    error={
+                      errors.date
+                        ? {
+                            content: 'Please enter a valid date.',
+                          }
+                        : null
+                    }
+                    placeholder='Date'
+                    name='date'
+                    onChange={handleChange}
+                  />
+                </Segment>
               </Grid.Column>
               <Grid.Column>
-                <Form.Input
-                  fluid
-                  label='User'
-                  error={
-                    errors.user
-                      ? {
-                          content: 'Please enter a valid user id',
-                        }
-                      : null
-                  }
-                  placeholder='User'
-                  name='user'
-                  onChange={handleChange}
-                />
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    User
+                  </Label>
+                  <Form.Input
+                    fluid
+                    // label='User'
+                    error={
+                      errors.user
+                        ? {
+                            content: 'Please enter a valid user id',
+                          }
+                        : null
+                    }
+                    placeholder='User'
+                    name='user'
+                    onChange={handleChange}
+                  />
+                </Segment>
               </Grid.Column>
               <Grid.Column>
-                <Form.Input
-                  fluid
-                  type='text'
-                  label='Vial Id'
-                  error={
-                    errors.vial_id
-                      ? { content: 'Please enter a valid Vial ID' }
-                      : null
-                  }
-                  placeholder='Vial ID'
-                  name='vial_id'
-                  onChange={handleChange}
-                />
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    Vial ID
+                  </Label>
+                  <Form.Input
+                    fluid
+                    type='text'
+                    // label='Vial Id'
+                    error={
+                      errors.vial_id
+                        ? { content: 'Please enter a valid Vial ID' }
+                        : null
+                    }
+                    placeholder='Vial ID'
+                    name='vial_id'
+                    onChange={handleChange}
+                  />
+                </Segment>
               </Grid.Column>
               <Grid.Column>
-                <Form.Input
-                  fluid
-                  type='text'
-                  label='Zone From'
-                  error={
-                    errors.zone_from ? { content: 'Please enter a zone' } : null
-                  }
-                  placeholder='Zone From'
-                  name='zone_from'
-                  onChange={handleChange}
-                />
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    Zone From
+                  </Label>
+                  <Form.Input
+                    fluid
+                    type='text'
+                    // label='Zone From'
+                    error={
+                      errors.zone_from
+                        ? { content: 'Please enter a zone' }
+                        : null
+                    }
+                    placeholder='Zone From'
+                    name='zone_from'
+                    onChange={handleChange}
+                  />
+                </Segment>
               </Grid.Column>
-
+            </Grid.Row>
+            <Grid.Row>
               <Grid.Column>
-                <Form.Input
-                  fluid
-                  type='text'
-                  label='Zone To'
-                  placeholder='Zone To'
-                  error={
-                    errors.zone_to ? { content: 'Please enter a zone' } : null
-                  }
-                  name='zone_to'
-                  onChange={handleChange}
-                />
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    Zone To
+                  </Label>
+                  <Form.Input
+                    fluid
+                    type='text'
+                    // label='Zone To'
+                    placeholder='Zone To'
+                    error={
+                      errors.zone_to ? { content: 'Please enter a zone' } : null
+                    }
+                    name='zone_to'
+                    onChange={handleChange}
+                  />
+                </Segment>
               </Grid.Column>
               <Grid.Column>
-                <Form.Input
-                  fluid
-                  label='Diagnosis'
-                  error={
-                    errors.diagnosis
-                      ? {
-                          content: 'A diagnosis entry is helpful',
-                        }
-                      : null
-                  }
-                  placeholder='Diagnosis'
-                  name='diagnosis'
-                  onChange={handleChange}
-                />
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    Interim Diagnosis
+                  </Label>
+                  <Form.Input
+                    fluid
+                    // label='Diagnosis'
+                    error={
+                      errors.diagnosis
+                        ? {
+                            content: 'A diagnosis entry is helpful',
+                          }
+                        : null
+                    }
+                    placeholder='Diagnosis'
+                    name='diagnosis'
+                    onChange={handleChange}
+                  />
+                </Segment>
               </Grid.Column>
             </Grid.Row>
           </Grid>
-
-          <Grid.Row>
-            <Grid.Column>
-              <TextArea
-                type='text'
-                cols='70'
-                rows='8'
-                placeholder='Comments or Special Instructions'
-                name='description'
-                onChange={handleChange}
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Button type='submit' secondary>
-            Create Log
-          </Button>
+          <Grid columns={2}>
+            <Grid.Row>
+              <Grid.Column>
+                <Segment padded color='teal'>
+                  <Label attached='top left' color='grey' size='large'>
+                    Interim Diagnosis
+                  </Label>
+                  <TextArea
+                    type='text'
+                    cols='140'
+                    rows='8'
+                    placeholder='Comments or Special Instructions'
+                    name='description'
+                    onChange={handleChange}
+                  />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button type='submit' className={styles.button}>
+                  Create Log
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Form>
       )}
     </React.Fragment>

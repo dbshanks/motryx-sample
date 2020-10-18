@@ -1,16 +1,28 @@
+.indexContainer {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header {
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: $gray;
+  margin-bottom: 2rem;
+}
 .formRow {
   margin-bottom: 2rem;
 }
 
-.button {
-  width: 10rem;
-  background: $black;
+.button[type='submit'] {
+  background: $brand-green;
   color: $white;
   transition: all 0.3s linear;
 }
 
-.button:hover {
-  color: $brand-green;
+.button[type='submit']:hover {
+  background-color: $grn-black;
+  color: $white;
 }
 
 .label {

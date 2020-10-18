@@ -2,6 +2,7 @@ import _ from 'lodash';
 import fetch from 'isomorphic-unfetch';
 import { Doughnut } from 'react-chartjs-2';
 import { Grid } from 'semantic-ui-react';
+import styles from './metrics.module.scss';
 
 const Metrics = ({ data }) => {
   const zoneTo = [];
@@ -43,17 +44,26 @@ const Metrics = ({ data }) => {
           zoneFilter(zoneTo, 'Recovery'),
         ],
         backgroundColor: [
-          '#01579B',
-          '#0277BD',
-          '#0288D1',
-          '#039BE5',
-          '#03A9F4',
-          '#29B6F6',
-          '#4FC3F7',
-          '#81D4FA',
+          '#006064',
+          '#00838F',
+          '#0097A7',
+          '#00ACC1',
+          '#00BCD4',
+          '#26C6DA',
+          '#4DD0E1',
+          '#80DEEA',
         ],
       },
     ],
+  };
+
+  const legend = {
+    display: true,
+    position: 'right',
+    fullWidth: true,
+    labels: {
+      fontColor: '#212121',
+    },
   };
 
   const zoneFromData = {
@@ -80,27 +90,32 @@ const Metrics = ({ data }) => {
           zoneFilter(zoneFrom, 'Recovery'),
         ],
         backgroundColor: [
-          '#01579B',
-          '#0277BD',
-          '#0288D1',
-          '#039BE5',
-          '#03A9F4',
-          '#29B6F6',
-          '#4FC3F7',
-          '#81D4FA',
+          '#006064',
+          '#00838F',
+          '#0097A7',
+          '#00ACC1',
+          '#00BCD4',
+          '#26C6DA',
+          '#4DD0E1',
+          '#80DEEA',
         ],
       },
     ],
   };
 
   return (
-    <Grid columns={2}>
+    <Grid
+      columns={2}
+      verticalAlign='middle'
+      className={styles.metricsContainer}>
       <Grid.Row>
         <Grid.Column>
-          <Doughnut data={zoneToData} />
+          <h2 className={styles.zoneHeader}>Zone Pick Up</h2>
+          <Doughnut data={zoneToData} legend={legend} />
         </Grid.Column>
         <Grid.Column>
-          <Doughnut data={zoneFromData} />
+          <h2 className={styles.zoneHeader}>Zone Drop Off</h2>
+          <Doughnut data={zoneFromData} legend={legend} />
         </Grid.Column>
       </Grid.Row>
     </Grid>
