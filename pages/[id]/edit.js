@@ -2,7 +2,7 @@ import { Link } from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
-import { Row, Column } from '@Layout/Grid';
+import { Row, Column } from '@Layout/Navbar/node_modules/@Layout/Grid';
 import styles from './home.module.scss';
 
 const Home = () => {

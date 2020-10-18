@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@Components/*": ["_Components/*"],
-      "@Layout/*": ["_Layout/*"],
-      "@Models/*": ["_Models/*"],
+      "@Components/*": ["Components/*"],
+      "@Layout/*": ["Layout/*"],
+      "@Models/*": ["Models/*"],
       "@Utils/*": ["utils/*"],
       "@scss/*": ["scss/*"]
     }

@@ -94,7 +94,7 @@ const Metrics = ({ data }) => {
   };
 
   return (
-    <Grid columns={3}>
+    <Grid columns={2}>
       <Grid.Row>
         <Grid.Column>
           <Doughnut data={zoneToData} />
