@@ -1,7 +1,8 @@
-import fetch from 'isomorphic-unfetch';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import fetch from 'isomorphic-unfetch';
 import { Grid, Confirm, Button, Loader } from 'semantic-ui-react';
+import styles from './log.module.scss';
 
 const Log = ({ log }) => {
   const [confirm, setConfirm] = useState(false);
@@ -37,25 +38,56 @@ const Log = ({ log }) => {
     close();
   };
   return (
-    <Grid.Row>
+    <>
       {isDeleting ? (
         <Loader active />
       ) : (
-        <Grid.Column>
-          <p>{log.date}</p>
-          <p>{log.vial_id}</p>
-          <p>{log.user}</p>
-          <p>{log.zone_to}</p>
-          <p>{log.zone_from}</p>
-          <p>{log.diagnosis}</p>
-          <p>{log.description}</p>
-          <Button color='red' onClick={open}>
-            Delete
-          </Button>
-        </Grid.Column>
+        <>
+          <Grid columns={2} verticalAlign='middle'>
+            <Grid.Row className={styles.logContainer}>
+              <Grid.Column className={styles.column}>
+                <h1 className={styles.heading}>{log.date}</h1>
+                <h2 className={styles.vialID}>{log.vial_id}</h2>
+                <h2 className={styles.userID}>
+                  <span className={styles.staffLabel}>Staff:</span> {log.user}
+                </h2>
+
+                <h3 className={styles.diagnosis}>
+                  <span className={styles.diagnosisLabel}>
+                    Interim Diagnosis:
+                  </span>{' '}
+                  <br />
+                  {log.diagnosis}
+                </h3>
+                <h2 className={styles.description}>{log.description}</h2>
+              </Grid.Column>
+              <Grid.Column className={styles.zoneContainer}>
+                <div className={styles.zoneBorder}>
+                  <h1 className={styles.zoneText}>
+                    <small className={styles.subheading}>Pick Up Zone</small>
+                    <br />
+                    {log.zone_from}
+                  </h1>
+                  <h1 className={styles.zoneText}>
+                    <small className={styles.subheading}>Drop Off Zone</small>
+                    <br />
+                    {log.zone_to}
+                  </h1>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button color='red' onClick={open}>
+                  Delete
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </>
       )}
       <Confirm open={confirm} onCancel={close} onConfirm={handleDelete} />
-    </Grid.Row>
+    </>
   );
 };
 

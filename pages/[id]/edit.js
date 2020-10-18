@@ -2,7 +2,7 @@ import { Link } from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import fetch from 'isomorphic-unfetch';
-import { Row, Column } from '@Layout/Navbar/node_modules/@Layout/Grid';
+import { Grid } from 'semantic-ui-react';
 import styles from './home.module.scss';
 
 const Home = () => {
@@ -81,8 +81,8 @@ const Home = () => {
         <div>Loading....</div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <Row className={styles.formRow}>
-            <Column col={3}>
+          <Grid.Row className={styles.formRow}>
+            <Grid.Column>
               <label className={styles.label}>User</label>
               <input
                 type='text'
@@ -95,8 +95,8 @@ const Home = () => {
                 name='user'
                 onChange={handleChange}
               />
-            </Column>
-            <Column col={3}>
+            </Grid.Column>
+            <Grid.Column>
               <label className={styles.label}>Vial ID</label>
               <input
                 type='text'
@@ -109,8 +109,8 @@ const Home = () => {
                 name='vial_id'
                 onChange={handleChange}
               />
-            </Column>
-            <Column col={3}>
+            </Grid.Column>
+            <Grid.Column>
               <label className={styles.label}>Zone From</label>
               <input
                 type='text'
@@ -121,8 +121,8 @@ const Home = () => {
                 name='zone_from'
                 onChange={handleChange}
               />
-            </Column>
-            <Column col={3}>
+            </Grid.Column>
+            <Grid.Column>
               <label className={styles.label}>Zone To</label>
 
               <input
@@ -134,11 +134,11 @@ const Home = () => {
                 name='zone_to'
                 onChange={handleChange}
               />
-            </Column>
-          </Row>
+            </Grid.Column>
+          </Grid.Row>
 
-          <Row className={styles.formRow}>
-            <Column col={12} className={styles.description}>
+          <Grid.Row className={styles.formRow}>
+            <Grid.Column className={styles.description}>
               <textarea
                 type='text'
                 cols='70'
@@ -147,8 +147,8 @@ const Home = () => {
                 name='description'
                 onChange={handleChange}
               />
-            </Column>
-          </Row>
+            </Grid.Column>
+          </Grid.Row>
           <input type='submit' value='Create Log' className={styles.button} />
         </form>
       )}

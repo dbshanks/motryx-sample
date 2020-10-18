@@ -1,5 +1,5 @@
-import dbConnect from '@Utils/dbConnect';
-import DataSet from '@Models/Data';
+import dbConnect from '../../../utils/dbConnect';
+import DataSet from '../../../Models/Data';
 dbConnect();
 
 export default async (req, res) => {

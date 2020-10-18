@@ -2,7 +2,7 @@ import React from 'react';
 import fetch from 'isomorphic-unfetch';
 import { Table } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
-import { COLUMNS } from '@Models/Columns';
+import { COLUMNS } from '../../Models/Columns';
 import styles from './loghistory.module.scss';
 
 const LogHistory = ({ data }) => {

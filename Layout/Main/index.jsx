@@ -1,4 +1,4 @@
-import Navbar from '@Layout/Navbar';
+import Navbar from '../Navbar';
 import { Container } from 'semantic-ui-react';
 import styles from './main.module.scss';
 

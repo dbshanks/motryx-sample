@@ -8,16 +8,16 @@ export const COLUMNS = [
     accessor: 'vial_id',
   },
   {
-    Header: 'User',
-    accessor: 'user',
-  },
-  {
     Header: 'Zone From',
     accessor: 'zone_from',
   },
   {
     Header: 'Zone To',
     accessor: 'zone_to',
+  },
+  {
+    Header: 'User',
+    accessor: 'user',
   },
   {
     Header: 'Diagnosis',

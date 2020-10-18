@@ -1,0 +1,58 @@
+.logContainer {
+  height: 80vh;
+  display: flex;
+}
+
+.heading {
+  font-size: 3rem;
+  color: $brand-green;
+  margin-bottom: 2rem;
+}
+
+.vialID {
+  color: $black;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: $gray;
+  font-weight: 100;
+}
+
+.staffLabel {
+  color: $gray;
+}
+.userID {
+  color: $brand-green;
+  margin-bottom: 2rem;
+}
+
+.diagnosisLabel {
+  color: $gray;
+}
+.diagnosis {
+  color: $black;
+  margin-bottom: 3rem;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $brand-green;
+}
+
+.zoneContainer {
+  text-align: right;
+}
+.zoneBorder {
+  display: inline-block;
+  border: 5px solid $gray;
+  width: 20rem;
+  margin-right: 0;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.zoneText {
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
