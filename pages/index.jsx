@@ -98,7 +98,7 @@ const Home = () => {
       ) : (
         <Form onSubmit={handleSubmit} className={styles.indexContainer}>
           <h1 className={styles.header}>Tracker Input</h1>
-          <Grid columns={4}>
+          <Grid columns={3}>
             <Grid.Row>
               <Grid.Column>
                 <Segment padded color='teal'>
@@ -162,6 +162,8 @@ const Home = () => {
                   />
                 </Segment>
               </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
               <Grid.Column>
                 <Segment padded color='teal'>
                   <Label attached='top left' color='grey' size='large'>
@@ -182,8 +184,6 @@ const Home = () => {
                   />
                 </Segment>
               </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
               <Grid.Column>
                 <Segment padded color='teal'>
                   <Label attached='top left' color='grey' size='large'>
@@ -234,7 +234,7 @@ const Home = () => {
                   </Label>
                   <TextArea
                     type='text'
-                    cols='140'
+                    cols='2000'
                     rows='8'
                     placeholder='Comments or Special Instructions'
                     name='description'
@@ -245,7 +245,7 @@ const Home = () => {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Button type='submit' className={styles.button}>
+                <Button type='submit' className={styles.button} size='big'>
                   Create Log
                 </Button>
               </Grid.Column>

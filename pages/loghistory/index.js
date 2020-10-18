@@ -1,11 +1,29 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
+import clsx from 'clsx';
 import fetch from 'isomorphic-unfetch';
 import { Table } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { COLUMNS } from '../../Models/Columns';
 import styles from './loghistory.module.scss';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const LogHistory = ({ data }) => {
+  const rowReveal = () => {
+    gsap.fromTo(
+      '.rowRef',
+      {
+        opacity: 0,
+      },
+      { opacity: 1, duration: 0.4, stagger: 0.1 }
+    );
+  };
+
+  useEffect(() => {
+    rowReveal();
+  });
   const router = useRouter();
   return (
     <React.Fragment>
@@ -25,7 +43,7 @@ const LogHistory = ({ data }) => {
               <Table.Row
                 key={item._id}
                 onClick={() => router.push(`/${item._id}`)}
-                className={styles.rowHover}>
+                className={clsx(styles.rowHover, 'rowRef')}>
                 <Table.Cell>{item.date}</Table.Cell>
                 <Table.Cell>{item.vial_id}</Table.Cell>
                 <Table.Cell>{item.zone_from}</Table.Cell>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "chart.js": "^2.9.3",
+    "clsx": "^1.1.1",
     "gsap": "^3.5.1",
     "isomorphic-unfetch": "^3.1.0",
     "lodash": "^4.17.20",

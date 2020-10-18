@@ -15,13 +15,13 @@
 }
 
 .button[type='submit'] {
-  background: $brand-green;
+  background: $grn-black;
   color: $white;
   transition: all 0.3s linear;
 }
 
 .button[type='submit']:hover {
-  background-color: $grn-black;
+  background-color: $brand-green;
   color: $white;
 }
 
