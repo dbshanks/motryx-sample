@@ -1,5 +1,5 @@
 import dbConnect from '@Utils/dbConnect';
-import Data from '@Models/Data';
+import DataSet from '@Models/Data';
 dbConnect();
 
 export default async (req, res) => {
@@ -8,15 +8,16 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const datasets = await Data.find({});
-        res.status(200).json({ success: true, data: datasets });
+        const dataset = await DataSet.find({});
+
+        res.status(200).json({ success: true, data: dataset });
       } catch (error) {
         res.status(400).json({ success: false });
       }
       break;
     case 'POST':
       try {
-        const data = await Data.create(req.body);
+        const data = await DataSet.create(req.body);
         res.status(201).json({ success: true, data: data });
       } catch (error) {
         res.status(400).json({ success: false });

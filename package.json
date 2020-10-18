@@ -8,19 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
-    "d3": "^6.2.0",
-    "formik": "^2.2.0",
+    "chart.js": "^2.9.3",
     "gsap": "^3.5.1",
     "isomorphic-unfetch": "^3.1.0",
+    "lodash": "^4.17.20",
     "mongoose": "^5.10.8",
     "next": "9.5.4",
-    "prettier": "^2.1.2",
     "react": "16.13.1",
+    "react-chartjs-2": "^2.10.0",
     "react-dom": "16.13.1",
     "react-table": "^7.6.0",
     "sass": "^1.27.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.0",
-    "yup": "^0.29.3"
+    "semantic-ui-react": "^2.0.0"
   }
 }

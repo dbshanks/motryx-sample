@@ -1,4 +1,5 @@
 import React from 'react';
+import fetch from 'isomorphic-unfetch';
 import { Table } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { COLUMNS } from '@Models/Columns';
@@ -8,7 +9,7 @@ const LogHistory = ({ data }) => {
   const router = useRouter();
   return (
     <React.Fragment>
-      <Table celled>
+      <Table basic>
         <Table.Header>
           <Table.Row>
             {COLUMNS.map((item) => (
@@ -31,7 +32,7 @@ const LogHistory = ({ data }) => {
                 <Table.Cell>{item.zone_to}</Table.Cell>
                 <Table.Cell>{item.user}</Table.Cell>
                 <Table.Cell>{item.diagnosis}</Table.Cell>
-                <Table.Cell>{item.description}</Table.Cell>
+                <Table.Cell width={5}>{item.description}</Table.Cell>
               </Table.Row>
             );
           })}
@@ -44,7 +45,6 @@ const LogHistory = ({ data }) => {
 LogHistory.getInitialProps = async () => {
   const res = await fetch('http://localhost:3000/api/dataset');
   const { data } = await res.json();
-  // console.log(data);
   return { data: data };
 };
 

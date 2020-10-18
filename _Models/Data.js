@@ -35,4 +35,5 @@ const DataSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.models.Data || mongoose.model('Data', DataSchema);
+module.exports =
+  mongoose.models.DataSet || mongoose.model('DataSet', DataSchema);

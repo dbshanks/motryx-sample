@@ -15,6 +15,9 @@ const index = () => {
             <li className={styles.li}>
               <Link href='/loghistory'>Log History</Link>
             </li>
+            <li className={styles.li}>
+              <Link href='/metrics'>Metrics</Link>
+            </li>
           </ul>
         </Column>
       </Row>
