@@ -40,7 +40,7 @@ const Home = () => {
 
   const createLog = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/dataset', {
+      const res = await fetch('https://motryx-sample.vercel.app/api/dataset', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

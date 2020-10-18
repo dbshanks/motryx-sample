@@ -39,7 +39,7 @@ const EditLog = ({ data }) => {
   const updateLog = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/dataset/${router.query.id}`,
+        `https://motryx-sample.vercel.app/${router.query.id}`,
         {
           method: 'PUT',
           headers: {
@@ -266,7 +266,7 @@ const EditLog = ({ data }) => {
 };
 
 EditLog.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`http://localhost:3000/api/dataset/${id}`);
+  const res = await fetch(`https://motryx-sample.vercel.app/api/dataset/${id}`);
   const { data } = await res.json();
 
   return { data: data };

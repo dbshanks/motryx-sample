@@ -23,7 +23,7 @@ const Log = ({ log }) => {
     const logId = router.query.id;
     try {
       const deleted = await fetch(
-        `http://localhost:3000/api/dataset/${logId}`,
+        `https://motryx-sample.vercel.app/api/dataset/${logId}`,
         {
           method: 'Delete',
         }
@@ -104,7 +104,7 @@ const Log = ({ log }) => {
 };
 
 Log.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`http://localhost:3000/api/dataset/${id}`);
+  const res = await fetch(`https://motryx-sample.vercel.app/api/dataset/${id}`);
 
   const { data } = await res.json();
   return { log: data };

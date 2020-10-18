@@ -123,7 +123,7 @@ const Metrics = ({ data }) => {
 };
 
 Metrics.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/dataset');
+  const res = await fetch('https://motryx-sample.vercel.app/api/dataset');
   const { data } = await res.json();
   return { data: data };
 };
