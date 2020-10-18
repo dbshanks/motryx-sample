@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
@@ -39,11 +39,11 @@ const Log = ({ log }) => {
     close();
   };
   return (
-    <>
+    <Fragment>
       {isDeleting ? (
-        <Loader active />
+        <Loader active inline='centered' />
       ) : (
-        <>
+        <Fragment>
           <Grid columns={2} verticalAlign='middle'>
             <Grid.Row className={styles.logContainer}>
               <Grid.Column className={styles.column}>
@@ -88,7 +88,7 @@ const Log = ({ log }) => {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-        </>
+        </Fragment>
       )}
       <Confirm
         open={confirm}
@@ -99,7 +99,7 @@ const Log = ({ log }) => {
         cancelButton='Return to page'
         confirmButton='Delete Tracker'
       />
-    </>
+    </Fragment>
   );
 };
 
