@@ -10,20 +10,18 @@ import {
   Segment,
   Label,
 } from 'semantic-ui-react';
-import styles from './home.module.scss';
+import styles from './editLog.module.scss';
 
-const Home = () => {
-  const [form, setForm] = useState([
-    {
-      date: '',
-      user: '',
-      vial_id: '',
-      zone_from: '',
-      zone_to: '',
-      diagnosis: '',
-      description: '',
-    },
-  ]);
+const EditLog = ({ data }) => {
+  const [form, setForm] = useState({
+    date: data.date,
+    user: data.user,
+    vial_id: data.vial_id,
+    zone_from: data.zone_from,
+    zone_to: data.zone_to,
+    diagnosis: data.diagnosis,
+    description: data.description,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const router = useRouter();
@@ -31,23 +29,26 @@ const Home = () => {
   useEffect(() => {
     if (isSubmitting) {
       if (Object.keys(errors).length === 0) {
-        createLog();
+        updateLog();
       } else {
         setIsSubmitting(false);
       }
     }
   }, [errors]);
 
-  const createLog = async () => {
+  const updateLog = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/dataset', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        `http://localhost:3000/api/dataset/${router.query.id}`,
+        {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form),
+        }
+      );
       router.push('/loghistory');
     } catch (error) {
       console.log(error);
@@ -93,10 +94,10 @@ const Home = () => {
   return (
     <React.Fragment>
       {isSubmitting ? (
-        <Loader />
+        <Loader active inline='centered' />
       ) : (
         <Form onSubmit={handleSubmit} className={styles.indexContainer}>
-          <h1 className={styles.header}>Tracker Input</h1>
+          <h1 className={styles.header}>Tracker Update</h1>
           <Grid columns={3}>
             <Grid.Row>
               <Grid.Column>
@@ -116,6 +117,7 @@ const Home = () => {
                     }
                     placeholder='Date'
                     name='date'
+                    value={form.date}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -137,6 +139,7 @@ const Home = () => {
                     }
                     placeholder='User'
                     name='user'
+                    value={form.user}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -157,6 +160,7 @@ const Home = () => {
                     }
                     placeholder='Vial ID'
                     name='vial_id'
+                    value={form.vial_id}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -179,6 +183,7 @@ const Home = () => {
                     }
                     placeholder='Zone From'
                     name='zone_from'
+                    value={form.zone_from}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -197,6 +202,7 @@ const Home = () => {
                       errors.zone_to ? { content: 'Please enter a zone' } : null
                     }
                     name='zone_to'
+                    value={form.zone_to}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -218,6 +224,7 @@ const Home = () => {
                     }
                     placeholder='Diagnosis'
                     name='diagnosis'
+                    value={form.diagnosis}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -232,11 +239,13 @@ const Home = () => {
                     Interim Diagnosis
                   </Label>
                   <TextArea
+                    fluid
                     type='text'
                     cols='2000'
                     rows='8'
                     placeholder='Comments or Special Instructions'
                     name='description'
+                    value={form.description}
                     onChange={handleChange}
                   />
                 </Segment>
@@ -245,7 +254,7 @@ const Home = () => {
             <Grid.Row>
               <Grid.Column>
                 <Button type='submit' className={styles.button} size='big'>
-                  Create Log
+                  Update
                 </Button>
               </Grid.Column>
             </Grid.Row>
@@ -256,4 +265,11 @@ const Home = () => {
   );
 };
 
-export default Home;
+EditLog.getInitialProps = async ({ query: { id } }) => {
+  const res = await fetch(`http://localhost:3000/api/dataset/${id}`);
+  const { data } = await res.json();
+
+  return { data: data };
+};
+
+export default EditLog;

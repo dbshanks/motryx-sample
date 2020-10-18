@@ -93,7 +93,7 @@ const Home = () => {
   return (
     <React.Fragment>
       {isSubmitting ? (
-        <Loader />
+        <Loader active inline='centered' />
       ) : (
         <Form onSubmit={handleSubmit} className={styles.indexContainer}>
           <h1 className={styles.header}>Tracker Input</h1>

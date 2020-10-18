@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import { Grid, Confirm, Button, Loader } from 'semantic-ui-react';
 import styles from './log.module.scss';
@@ -78,7 +79,10 @@ const Log = ({ log }) => {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Button color='red' onClick={open}>
+                <Link href={`/${log._id}/edit`}>
+                  <Button secondary>Edit</Button>
+                </Link>
+                <Button color='teal' onClick={open}>
                   Delete
                 </Button>
               </Grid.Column>
@@ -86,7 +90,15 @@ const Log = ({ log }) => {
           </Grid>
         </>
       )}
-      <Confirm open={confirm} onCancel={close} onConfirm={handleDelete} />
+      <Confirm
+        open={confirm}
+        onCancel={close}
+        onConfirm={handleDelete}
+        header='Remove tracker from log files.'
+        content='Deleting is permanent. Double check tracker log before deletion.'
+        cancelButton='Return to page'
+        confirmButton='Delete Tracker'
+      />
     </>
   );
 };
