@@ -229,7 +229,7 @@ const Home = () => {
               <Grid.Column>
                 <Segment padded color='teal'>
                   <Label attached='top left' color='grey' size='large'>
-                    Comments or Instructions
+                    Comments & Instructions
                   </Label>
                   <TextArea
                     type='text'
